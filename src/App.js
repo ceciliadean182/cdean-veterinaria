@@ -1,3 +1,4 @@
+import NavBar from './components/NavBar';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           React
         </a>
       </header>
+      <NavBar />
     </div>
   );
 }
