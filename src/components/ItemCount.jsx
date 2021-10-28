@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from 'react-bootstrap';
 import "../styles/styles.css"
 
-const ItemCount = ({initial, stock, text}) => {
+const ItemCount = ({initial, stock, onAdd}) => {
     
     //número máximo = stock --> valor indicador para saber hasta cuándo sumar
     //número mínimo (1) --> valor indicador para saber hasta cuándo restar
@@ -21,23 +21,16 @@ const ItemCount = ({initial, stock, text}) => {
         }
     }
 
-    const onAdd = () => {
-        const message = `Agregaste ${ qty } producto`;
-        if(stock !==0) {
-            (qty === 1) ? alert(message) : alert(message + `s`)
-        }
-    }
+    
     return (
         <>
-            <h4>{ text }</h4>
             <div className="countCarrito">
-                
                 <Button onClick={ onDecrease }> - </Button>
-                { qty }
+                <div>{ qty }</div>
                 <Button onClick={ onIncrease }> + </Button>
-                <div>
-                <Button onClick={ onAdd }> Agregar al carrito</Button>
-                </div>
+            </div>
+            <div className="countCarrito">
+                <Button onClick={() => onAdd(qty) }> Agregar al carrito</Button>
             </div>
         </>
     )
