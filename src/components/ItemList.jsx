@@ -1,10 +1,13 @@
 
+import Item from "./Item"
 
-const ItemList = ( props ) => {
+const ItemList = ( {product} ) => {
     // se mapea info
     // El map genera los item (enviándole las props)
     return (
-        <h3>Item</h3>
+        product.map(prod=> <Item key={prod.id} prod={prod} />)
+    
+    
 
        
     )

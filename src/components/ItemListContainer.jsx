@@ -1,9 +1,27 @@
 import { useEffect, useState } from "react";
-import ItemCount from "./ItemCount";
+import getFetch from "../services/getFetch";
 import ItemList from "./ItemList";
 
-const ItemListContainer = ({greeting}) => {
-    const addItem = (qty,stock) => {
+const ItemListContainer = () => {
+    const[product, setProduct] = useState([]);
+    //const[loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getFetch
+            .then( res => {
+                setProduct(res)
+            })
+            .catch(err => console.log(err))
+            //.finally(()=> setLoading(false))
+    }, [])
+    console.log(product)
+    return(
+        <div className="container">
+            <ItemList product={product} />
+        </div>
+    )
+
+    /*const addItem = (qty,stock) => {
         const message = `Agregaste ${ qty } producto`;
         if(stock !==0) {
             (qty === 1) ? alert(message) : alert(message + `s`)
@@ -12,8 +30,9 @@ const ItemListContainer = ({greeting}) => {
     const[users, setUsers] = useState([]);
     //fetch async await
     const getUsers = async() => {
-        const data = await fetch('https://jsonplaceholder.typicode.com/users')
-        const dataUsers = data.json()
+        const data = await fetch('')
+        const dataUsers = await data.json()
+        setUsers(dataUsers)
 
     }
     useEffect(() => {
@@ -27,7 +46,7 @@ const ItemListContainer = ({greeting}) => {
 
 
         </>
-    )
+    )*/
 }
 
 export default ItemListContainer;
