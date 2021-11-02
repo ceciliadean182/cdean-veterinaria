@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import getFetch from "../services/getFetch";
 import ItemList from "./ItemList";
 
-const ItemListContainer = () => {
+const ItemListContainer = ({greeting}) => {
     const[product, setProduct] = useState([]);
-    //const[loading, setLoading] = useState(true);
 
     useEffect(() => {
         getFetch
@@ -12,7 +11,6 @@ const ItemListContainer = () => {
                 setProduct(res)
             })
             .catch(err => console.log(err))
-            //.finally(()=> setLoading(false))
     }, [])
     console.log(product)
     return(
@@ -26,27 +24,8 @@ const ItemListContainer = () => {
         if(stock !==0) {
             (qty === 1) ? alert(message) : alert(message + `s`)
         }
-    }
-    const[users, setUsers] = useState([]);
-    //fetch async await
-    const getUsers = async() => {
-        const data = await fetch('')
-        const dataUsers = await data.json()
-        setUsers(dataUsers)
-
-    }
-    useEffect(() => {
-        setTimeout(() => getUsers(), 2000)
-    }, [])
-    return (
-        <>
-            <h2>{greeting}</h2>
-            <ItemCount initial={ 1 } stock={ 10 } onAdd={ addItem }/>
-            <ItemList users = { users } />
-
-
-        </>
-    )*/
+    
+    }*/
 }
 
 export default ItemListContainer;
