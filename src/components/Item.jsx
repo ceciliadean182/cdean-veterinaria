@@ -1,9 +1,9 @@
-
+import { Nav } from 'react-bootstrap';
 
 const Item = ({prod}) => {
 
     return(
-        <div className="card w-50 mt-5">
+        <div className="card mt-5">
                                         <div className="card-header">
                                             {prod.title}    
                                         </div>
@@ -12,9 +12,10 @@ const Item = ({prod}) => {
                                             <p>Precio: ${prod.price}</p>
                                         </div>
                                         <div className="card-footer">
-                                            <button className="btn btn-outline-primary btn-block">
+                                            <Nav.Link to={`/detail/${prod.id}`}><button className="btn btn-outline-primary btn-block">
                                                 Ver detalles
                                             </button>
+                                            </Nav.Link>
                                         </div>    
         </div>
     )

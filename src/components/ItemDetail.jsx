@@ -1,7 +1,14 @@
+import {useState} from 'react'
+import ItemCount from './ItemCount';
 
 
 const ItemDetail = ({detail}) => {
-    
+    const [count, setCount] = useState(0)
+    const onAdd =(cant)=>{
+        setCount(cant)
+    }
+    console.log(count)
+
     return (
         <div className="card w-50 mt-5">
             <div className="card-header">
@@ -15,7 +22,8 @@ const ItemDetail = ({detail}) => {
         </div>
         <div className="card-footer">
             <p>Precio: ${detail.price}</p>
-        </div>    
+        </div> 
+        <ItemCount initial={1} stock={5} onAdd={onAdd} />   
 </div>
     )
 }
