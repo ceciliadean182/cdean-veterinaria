@@ -18,6 +18,7 @@ const Item = ({prod}) => {
                                             </Nav.Link>
                                         </div>    
         </div>
+        
     )
 }
 
