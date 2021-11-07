@@ -6,15 +6,15 @@ import { useParams } from "react-router";
 
 const ItemDetailContainer = () => {
     const[detail, setDetail] = useState([]);
-    const { id } = useParams();
+    const { productoId } = useParams();
 
     useEffect(() => {
         getFetchDetail
         .then(res => {        
-            setDetail(res.find(prod => prod.id === id))
+            setDetail(res.find(prod => prod.id === productoId))
         })
         .catch(err => console.log(err))
-    }, [id])
+    }, [productoId])
     return(
         <div className="container">
             {detail && <ItemDetail detail={detail} /> }

@@ -11,7 +11,7 @@ const ItemListContainer = ({greeting}) => {
         if(id) {
             getFetch
             .then( res => {
-                setProduct(res.filter(prod => prod.tipo === id ))
+                setProduct(res.filter(prod => prod.categoria === id ))
             })
             .catch(err => console.log(err))
 

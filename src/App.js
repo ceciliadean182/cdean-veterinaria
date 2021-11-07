@@ -2,7 +2,7 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import './styles/styles.css';
 import ItemDetailContainer from './components/ItemDetailContainer';
-//import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 
 
@@ -10,19 +10,16 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 const App =() => {
   return (
     <div className="App">
-      <NavBar/>
-      <ItemListContainer greeting = "Nuestros productos" />
-      <ItemDetailContainer />
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <NavBar/>
-        <Routes>
+        <Switch>
           <Route exact path='/'>
             <ItemListContainer/>
           </Route>
-          <Route exact path='/product/:id' component={ItemListContainer}/>
-          <Route exact path='/detail/:id' component={ItemDetailContainer}/>
-        </Routes>
-      </BrowserRouter> */}
+          <Route exact path='/categoria/:id' component={ItemListContainer}/>
+          <Route exact path='/detalle/:id' component={ItemDetailContainer}/>
+        </Switch>
+      </BrowserRouter> 
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Item = ({prod}) => {
 
@@ -12,13 +12,15 @@ const Item = ({prod}) => {
                                             <p>Precio: ${prod.price}</p>
                                         </div>
                                         <div className="card-footer">
-                                            <Nav.Link to={`/detail/${prod.id}`}><button className="btn btn-outline-primary btn-block">
-                                                Ver detalles
-                                            </button>
-                                            </Nav.Link>
+                                        <Link to={`/detalle/${prod.id}`}>
+                    <button className="btn btn-outline-primary btn-block">
+                        Ver detalles
+                    </button>
+                </Link>
+
                                         </div>    
         </div>
-        
+
     )
 }
 
