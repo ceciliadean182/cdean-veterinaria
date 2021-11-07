@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getFetch from "../../services/getFetch";
 import ItemList from "../ItemList/ItemList";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
     const[product, setProduct] = useState([]);

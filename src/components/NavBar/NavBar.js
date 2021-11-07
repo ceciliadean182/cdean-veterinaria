@@ -8,16 +8,17 @@ import './NavBar.css';
 const NavBar = () => {
     return(
         <>
-            <Navbar bg="dark" variant="dark">
+            <Navbar className="nav">
                 <Container>
-                    <Navbar.Brand to="#home">Pet Store</Navbar.Brand>
+                    <Navbar.Brand className="mainTitle" to="#home"><img className='navLogo' src="../assets/Chester.svg" alt="logo"/>
+                    </Navbar.Brand>
                     <Nav className="me-auto">
                     <Navbar><Link className="link" to="/">Home</Link></Navbar>
                     <Navbar><Link className="link" to="/categoria/comida">Comida</Link></Navbar>
                     <Navbar><Link className="link" to="/categoria/juguetes">Juguetes</Link></Navbar>
                     <Navbar.Brand to="#home"><CartWidget/></Navbar.Brand>
                     </Nav>
-                </Container>
+                </Container>s
             </Navbar>
         </>
     )
