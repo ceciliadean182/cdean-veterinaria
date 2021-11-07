@@ -29,8 +29,3 @@
 .navLogo:hover {
     transition:3s;
 }
-.countCarrito {
-    max-width: 30%;
-    display:flex;
-    justify-content: space-evenly;
-}

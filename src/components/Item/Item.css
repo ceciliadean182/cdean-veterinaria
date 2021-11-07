@@ -1,0 +1,21 @@
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+img.imgCard {
+    height: 100%;
+    width: 100%;
+}
+
+.cardTitle {
+    margin: 0 auto;
+    font-family: 'Antic Didone', serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.price {
+    font-family: 'Antic Didone', serif;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom:10px;
+}

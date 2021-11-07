@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import ItemCount from '../ItemCount/ItemCount';
+import './ItemDetail.css';
 
 
 const ItemDetail = ({detail}) => {
@@ -10,21 +11,24 @@ const ItemDetail = ({detail}) => {
     console.log(count)
 
     return (
-        <div className="card w-50 mt-5">
+        <div className="cardDetail card w-50 mt-5 mb-5">
             <div className="card-header">
-               {detail.title}    
+               <span className="cardTitle">{detail.title}</span>   
             </div>
-        <div className="card-body">
-            <img src={detail.imageUrl} alt="" />
-            <div>{detail.description}</div>
-            <p>Stock:{detail.stock}</p>
+            <div className="card-body">
+                <img className="imgDetail mx-auto d-block" src={detail.imageUrl} alt="" />
+            </div>
+            <hr />
+                <div className="card-body">
+                <span className="cardTitle">{detail.description}</span>
+                </div>
             
-        </div>
-        <div className="card-footer">
-            <p>Precio: ${detail.price}</p>
-        </div> 
-        <ItemCount initial={count} stock={detail.stock} onAdd={onAdd}/>
-</div>
+            <div className="card-footer">
+                <p className="cardTitle">Stock: {detail.stock}</p>
+                <p className="cardTitle">Precio: ${detail.price}</p>
+                <ItemCount initial={count} stock={detail.stock} onAdd={onAdd}/>
+            </div> 
+        </div>  
     )
 }
 
