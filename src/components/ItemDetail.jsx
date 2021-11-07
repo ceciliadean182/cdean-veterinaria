@@ -12,7 +12,7 @@ const ItemDetail = ({detail}) => {
     return (
         <div className="card w-50 mt-5">
             <div className="card-header">
-                {detail.title}    
+               {detail.title}    
             </div>
         <div className="card-body">
             <img src={detail.imageUrl} alt="" />
@@ -23,7 +23,7 @@ const ItemDetail = ({detail}) => {
         <div className="card-footer">
             <p>Precio: ${detail.price}</p>
         </div> 
-        <ItemCount initial={1} stock={5} onAdd={onAdd} />   
+        <ItemCount initial={count} stock={detail.stock} onAdd={onAdd}/>
 </div>
     )
 }

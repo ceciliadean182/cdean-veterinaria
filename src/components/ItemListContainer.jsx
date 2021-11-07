@@ -3,7 +3,7 @@ import getFetch from "../services/getFetch";
 import ItemList from "./ItemList";
 import { useParams } from "react-router";
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const[product, setProduct] = useState([]);
     const { id } = useParams();
 
@@ -11,7 +11,7 @@ const ItemListContainer = ({greeting}) => {
         if(id) {
             getFetch
             .then( res => {
-                setProduct(res.filter(prod => prod.categoria === id ))
+                setProduct(res.filter(prod => prod.tipo === id ))
             })
             .catch(err => console.log(err))
 
