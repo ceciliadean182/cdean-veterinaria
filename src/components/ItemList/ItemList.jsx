@@ -1,5 +1,5 @@
 
-import Item from "./Item"
+import Item from "../Item/Item"
 
 const ItemList = ( {product} ) => {
     // se mapea info

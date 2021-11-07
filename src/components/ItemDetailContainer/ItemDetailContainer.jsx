@@ -1,5 +1,5 @@
-import getFetch from "../services/getFetch"
-import ItemDetail from "./ItemDetail";
+import getFetch from "../../services/getFetch"
+import ItemDetail from "../ItemDetail/ItemDetail";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

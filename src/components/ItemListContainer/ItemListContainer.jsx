@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import getFetch from "../services/getFetch";
-import ItemList from "./ItemList";
+import getFetch from "../../services/getFetch";
+import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router";
 
 const ItemListContainer = () => {

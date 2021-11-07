@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from 'react-bootstrap';
-import "../styles/styles.css"
 
 const ItemCount = ({initial, stock, onAdd}) => {
     

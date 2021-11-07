@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import CartWidget from "./CartWidget";
-//import {Link} from 'react-router-dom';
+import CartWidget from "../Cart/CartWidget";
+import {Link} from 'react-router-dom';
+import './NavBar.css';
 
 
 const NavBar = () => {
@@ -11,12 +12,11 @@ const NavBar = () => {
                 <Container>
                     <Navbar.Brand to="#home">Pet Store</Navbar.Brand>
                     <Nav className="me-auto">
-                    <Nav.Link to="#home">Home</Nav.Link>
-                    <Nav.Link to="#productos">Productos</Nav.Link>
-                    <Nav.Link to="#contacto">Contacto</Nav.Link>
+                    <Navbar><Link className="link" to="/">Home</Link></Navbar>
+                    <Navbar><Link className="link" to="/categoria/comida">Comida</Link></Navbar>
+                    <Navbar><Link className="link" to="/categoria/juguetes">Juguetes</Link></Navbar>
                     <Navbar.Brand to="#home"><CartWidget/></Navbar.Brand>
                     </Nav>
-                    
                 </Container>
             </Navbar>
         </>

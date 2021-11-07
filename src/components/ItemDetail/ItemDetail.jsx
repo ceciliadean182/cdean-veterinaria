@@ -1,9 +1,9 @@
 import {useState} from 'react'
-import ItemCount from './ItemCount';
+import ItemCount from '../ItemCount/ItemCount';
 
 
 const ItemDetail = ({detail}) => {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
     const onAdd =(cant)=>{
         setCount(cant)
     }
