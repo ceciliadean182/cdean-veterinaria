@@ -24,6 +24,30 @@ const products = [
     imageUrl:"../assets/pelota_goma.png", 
     stock:10 },
 
+    { id:"4", 
+    title:"Capita impermeable", 
+    tipo: "ropa",
+    price: 1490, 
+    description:"Capita impermeable, ideal para los paseos de invierno y días lluviosos",
+    imageUrl:"../assets/capita.jpg", 
+    stock:10 },
+
+    { id:"5", 
+    title:"Remera Mafia", 
+    tipo: "ropa",
+    price: 1690, 
+    description:"¿Quién es el jefe? Hecho de una mezcla súper suave de algodón y poliéster, todos nuestros suéteres para perros están perfectamente cortados y vienen con una etiqueta de caucho Zee.Dog en la parte posterior y una cremallera en la parte delantera. Anchura - Extra pequeño 19 cm - Extra grande 45 cm Largo - Extra pequeño 25 cm - Extra grande 60 cm",
+    imageUrl:"../assets/remera_mafia.jpg", 
+    stock:10 },
+
+    { id:"6", 
+    title:"Peluche estrella", 
+    tipo: "juguetes",
+    price: 119, 
+    description:"Juguete de peluche rosado en forma de estrella.",
+    imageUrl:"../assets/estrella.jpeg", 
+    stock:10 },
+
 
 ];
 

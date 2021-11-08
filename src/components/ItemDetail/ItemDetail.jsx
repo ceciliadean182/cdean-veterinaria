@@ -24,7 +24,7 @@ const ItemDetail = ({detail}) => {
                 </div>
             
             <div className="card-footer">
-                <p className="cardTitle">Stock: {detail.stock}</p>
+                <p className="cardTitle">Cantidad disponible: {detail.stock}</p>
                 <p className="cardTitle">Precio: ${detail.price}</p>
                 <ItemCount initial={count} stock={detail.stock} onAdd={onAdd}/>
             </div> 

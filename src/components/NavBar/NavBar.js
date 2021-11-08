@@ -16,9 +16,10 @@ const NavBar = () => {
                     <Navbar><Link className="link" to="/">Home</Link></Navbar>
                     <Navbar><Link className="link" to="/categoria/comida">Comida</Link></Navbar>
                     <Navbar><Link className="link" to="/categoria/juguetes">Juguetes</Link></Navbar>
-                    <Navbar.Brand to="#home"><CartWidget/></Navbar.Brand>
+                    <Navbar><Link className="link" to="/categoria/ropa">Ropa</Link></Navbar>
+                    <Navbar.Brand><Link to="./cart"><CartWidget/></Link></Navbar.Brand>
                     </Nav>
-                </Container>s
+                </Container>
             </Navbar>
         </>
     )

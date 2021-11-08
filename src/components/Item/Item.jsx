@@ -6,7 +6,7 @@ const Item = ({prod}) => {
 
     return(
         <div className="productos">
-            <div className="card mt-5 mb-5">
+            <div className="card mt-4 mb-4">
                 <div className="card-header">
                     <span className="cardTitle">{prod.title}</span> 
                 </div>

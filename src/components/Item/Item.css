@@ -1,10 +1,7 @@
-.productos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
+
 img.imgCard {
-    height: 100%;
-    width: 100%;
+    width: 331px;
+    height:331px;
 }
 
 .cardTitle {
