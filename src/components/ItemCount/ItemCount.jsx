@@ -20,7 +20,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
         if(count > initial) {
             setCount(count - 1)
         }else {
-            alert("Menos que cero")
+            alert("La cantidad a comprar no puede ser menor a 1")
         }
     }
 
