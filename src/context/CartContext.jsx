@@ -13,11 +13,25 @@ const CartContextProvider = ({ children }) => {
             items
         ])
     }
-    const mostrarListado =() => {
+    const total = () => {
+        return cartList.reduce((acum, prod) => acum + (prod.cantidad * prod.price), 0)
+    }
+    const mostrarListado =(itemAdded) => {
+        const findItem = cartList.find(itemCart => itemCart.product.id === itemAdded.product.id)
+        if(findItem) {
+            findItem.count = findItem.count + itemAdded.count
+            setCartList(cartList)
+        }
         
     }
+    const removeItem = (id) => {
+        setCartList(cartList.filter(prod => prod.id !== id))
+    }
+    const removeCart = () => {
+        setCartList([])
+    }
     return (
-        <CartContext.Provider value={{cartList, mostrarListado, addToCart}}>
+        <CartContext.Provider value={{cartList, mostrarListado, addToCart, total, removeItem, removeCart}}>
             { children }
         </CartContext.Provider>
     )
