@@ -2,10 +2,12 @@ import {useState} from 'react'
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 import { useCartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+import  { Button } from 'react-bootstrap';
 
 
 const ItemDetail = ({detail}) => {
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(0)
     const {agregarAlCarrito} = useCartContext()
     const onAdd =(cant)=>{
         setCount(cant)
@@ -29,7 +31,13 @@ const ItemDetail = ({detail}) => {
             <div className="card-footer">
                 <p className="cardTitle">Cantidad disponible: {detail.stock}</p>
                 <p className="cardTitle">Precio: ${detail.price}</p>
+                {count === 0 ? 
                 <ItemCount initial={count} stock={detail.stock} onAdd={onAdd}/>
+                :
+                <Link to="/cart">
+                                <Button className="addCart">Finalizar compra</Button>
+                </Link>
+                }
             </div> 
         </div>  
     )
