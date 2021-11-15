@@ -2,11 +2,23 @@ import { useCartContext } from "../../context/CartContext";
 import  { Button } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import '../ItemDetail/ItemDetail.css';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    const{cartList, total, removeCart, removeItem} = useCartContext();
+    const{cartList, total, removeCart, removeItem, calcularCantidad} = useCartContext();
 
     return(
+        <>
+			{calcularCantidad() === 0 ? (
+				<div className="container">
+					
+					<h1 className="cartMessage">No Tienes elementos en el carrito</h1>
+					
+					<Button as={Link} to="/" className="addCart">
+						Comprar
+					</Button>
+				</div>
+			) : (
         <div className='container'>
             <h1 className="">Carrito</h1>
             <table className="table table-bordered text-center">
@@ -38,7 +50,9 @@ const Cart = () => {
             <Button className="addCart">Pagar</Button>
             <Button className="addCart" onClick={()=>removeCart()}>Eliminar compra</Button>
         </div>
-    )
+    )}
+    </>
+);
 }
 
 export default Cart;
