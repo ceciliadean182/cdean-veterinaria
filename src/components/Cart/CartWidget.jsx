@@ -1,6 +1,7 @@
 import { FaShoppingCart } from 'react-icons/fa';
 import { useCartContext } from '../../context/CartContext';
 import { Badge } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 
 const CartWidget = ({cant}) => {
@@ -8,8 +9,10 @@ const CartWidget = ({cant}) => {
     if (calcularCantidad() !== 0) {
         return(
             <>
-            <FaShoppingCart className="cart" />
-                <Badge className="cartBadge" bg="dark">{calcularCantidad()}</Badge>
+            <Link to='/cart'>
+                <FaShoppingCart className="cart" />
+                    <Badge className="cartBadge" bg="dark">{calcularCantidad()}</Badge>
+            </Link>
             </>     
         )
     }return <></> 
