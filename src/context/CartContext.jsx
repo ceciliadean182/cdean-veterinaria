@@ -6,6 +6,7 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([])
+    
 
     const agregarAlCarrito  = (items) => {
 
@@ -28,6 +29,8 @@ const CartContextProvider = ({ children }) => {
     //     }
         
     // }
+
+    
     const calcularCantidad = () => {
         return cartList.reduce( (acc, prod) => acc + prod.cantidad, 0 )
       }

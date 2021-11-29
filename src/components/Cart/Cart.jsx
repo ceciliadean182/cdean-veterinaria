@@ -1,17 +1,19 @@
 import { useCartContext } from "../../context/CartContext";
-import  { Button, Form } from 'react-bootstrap';
-import { FaTrash } from 'react-icons/fa';
+import  { Button, Modal } from 'react-bootstrap';
 import '../ItemDetail/ItemDetail.css';
 import { Link } from 'react-router-dom';
 import {useState} from 'react'
 import { getFirestore } from "../../services/getFirestore";
 import firebase from "firebase";
 import 'firebase/firestore';
+import CartForm from "./CartForm";
+import CartItems from "./CartItems";
 
 
 const Cart = () => {
     const{cartList, total, removeCart, removeItem, calcularCantidad} = useCartContext();
 	const [idOrder, setIdOrder] = useState('')
+	const [show, setShow] = useState(false)//modal
 
     const [formData, setFormData] = useState({
         name:'',
@@ -20,9 +22,7 @@ const Cart = () => {
     })
 
 
-	const generarOrden = (e) => {
-		e.preventDefault()
-
+	const generarOrden = () => {
 		let orden = {}
 		
 		orden.date = firebase.firestore.Timestamp.fromDate(new Date());    
@@ -35,7 +35,7 @@ const Cart = () => {
             
             return {id, nombre, precio}   
         })
-
+		setIdOrder("")
 
 		const dbQuery = getFirestore();
 		dbQuery.collection('orders').add(orden)
@@ -44,7 +44,7 @@ const Cart = () => {
         .finally(()=> setFormData({
             name:'',
             phone:'',
-            email: ''
+            email: '',
         }))
 
 		const itemsToUpdate = dbQuery.collection('items').where(
@@ -59,7 +59,7 @@ const Cart = () => {
         .then( collection=>{
             collection.docs.forEach(docSnapshot => {
                 batch.update(docSnapshot.ref, {
-                    stock: docSnapshot.data().stock - cartList.find(item => item.id === docSnapshot.id).cantidad
+                    stock: docSnapshot.data().stock - cartList.find((item) => item.id === docSnapshot.id).cantidad,
                 })
             })
     
@@ -79,94 +79,48 @@ const Cart = () => {
 		})
 	}
 
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		generarOrden()
+	}
+
+	function handleClose() {
+		setShow(false)
+		removeCart()
+		}
+
+  
+	const modalClose = () => setShow(false)
 	
-
-
-    
+	const modalShow = () => setShow(true)
 
     return(
         <>
-			{calcularCantidad() === 0 ? (
-				<div className="container">
-					
-					<h1 className="cartMessage">No Tienes elementos en el carrito</h1>
-					
-					<Button as={Link} to="/" className="addCart">
-						Comprar
-					</Button>
-				</div>
-			) : (
-        <div className='container'>
-            <h1 className="">Carrito</h1>
-			
-			<section>
-                {idOrder!==''&& <label>El id de su orden es : {idOrder}</label>}
-            </section>
-
-            <table className="table table-bordered text-center">
-								<thead>
-									<tr className="fs-5 fw-bold">
-										<th>Cantidad</th>
-										<th>Producto</th>
-										<th>Precio unitario</th>
-										<th>Subtotal</th>
-										<th></th>
-									</tr>
-								</thead>
-							<tbody>
-								{cartList.map((prod) => (
-									<tr key={prod.id}>
-										<td>{prod.cantidad}</td>
-										<td>{prod.title}</td>
-										<td>{`$ ${(prod.price)}`}</td>
-										<td>{`$ ${(prod.cantidad * prod.price)}`}</td>
-										<td><Button className="addCart" onClick={() => removeItem(prod.id)}><FaTrash /></Button></td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-                        <div>
-                            <p>Total compra: ${total()}</p>
-                        </div>
-            
-            {/* <Button className="addCart" >Pagar</Button> */}
-            <Button className="addCart" onClick={()=>removeCart()}>Eliminar compra</Button>
-			<div>
-			<Form onSubmit={generarOrden} onChange={handleChange}>	
-				
-					<Form.Group className="mb-3">
-						<Form.Label>Nombre completo</Form.Label>
-						<Form.Control placeholder="Ej: Juan Pérez"
-							name="name"
-							required
-							defaultValue={formData.name}/>
-					</Form.Group>
-					<Form.Group className="mb-3" controlId="formBasicEmail">
-						<Form.Label>Correo Electrónico</Form.Label>
-						<Form.Control placeholder="Ej: juan@hola.com"
-							name="email"
-							required
-							defaultValue={formData.email}/>
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Label>Teléfono</Form.Label>
-						<Form.Control placeholder="Ej: 095700684"
-							name="phone"
-							defaultValue={formData.phone}
-							required/>
-					</Form.Group>
-					
-			
-					<Button type="submit" className="addCart">Enviar</Button>
-		</Form>
-			</div>
-	  
-			
-
-
-        </div>
-    )}
-    </>
+			<CartItems modalShow={modalShow} /> 
+			<Modal show={show} onHide={modalClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Datos del comprador</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<CartForm formData={formData} handleSubmit={handleSubmit} handleChange={handleChange} />
+				</Modal.Body>
+				<Modal.Footer>
+					{idOrder !== "" && (
+						<>
+							
+								<Modal.Body className="addCart text-center text-white fw-normal">
+									{`Gracias por comprar en Chester Pet Shop 
+									Su número de orden es:  ${idOrder}`}
+								</Modal.Body>
+							
+							<Button as={Link} to="/" variant="secondary" className="addCart" onClick={handleClose}>
+								Cerrar
+							</Button>
+						</>
+					)}
+				</Modal.Footer>
+			</Modal>
+		</>
 );
 }
 
